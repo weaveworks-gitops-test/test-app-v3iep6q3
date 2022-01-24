@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: my-nginx-cvc8qo
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-cvc8qo
+  namespace: my-nginx-cvc8qo
+  labels:
+    name: nginx-cvc8qo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: nginx-cvc8qo
+  template:
+    metadata:
+      namespace: my-nginx-cvc8qo
+      labels:
+        name: nginx-cvc8qo
+    spec:
+      containers:
+      - name: nginx-cvc8qo
+        image: nginx
+        ports:
+        - containerPort: 80
+
